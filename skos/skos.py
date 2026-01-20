@@ -198,9 +198,9 @@ def plot_degrees(df: pd.DataFrame, outdir: Path) -> Path:
     curve = [degree_of_connection(s, k) for s in stars]
 
     # Band for relatedMatch (range of stars 1..5)
-    rel_vals = [degree_of_connection(s, k) for s in range(1, 6)]
-    rel_min = min(rel_vals)
-    rel_max = max(rel_vals)
+    # rel_vals = [degree_of_connection(s, k) for s in range(1, 6)]
+    # rel_min = min(rel_vals)
+    # rel_max = max(rel_vals)
 
     # y values from df
     y_related = float(
@@ -220,6 +220,41 @@ def plot_degrees(df: pd.DataFrame, outdir: Path) -> Path:
     plt.plot(stars, curve, marker="o")
     plt.plot(points_x, points_y, marker="o", linestyle="")
 
+    # --- Minimal labels on the orange points only (R / C / E) ---
+
+    plt.annotate(
+        "R",
+        xy=(x_related, y_related),
+        xytext=(0, 8),
+        textcoords="offset points",
+        ha="center",
+        va="bottom",
+        fontsize=11,
+        fontweight="bold",
+    )
+
+    plt.annotate(
+        "C",
+        xy=(6.0, y_close),
+        xytext=(0, 8),
+        textcoords="offset points",
+        ha="center",
+        va="bottom",
+        fontsize=11,
+        fontweight="bold",
+    )
+
+    plt.annotate(
+        "E",
+        xy=(7.0, y_exact),
+        xytext=(0, -12),
+        textcoords="offset points",
+        ha="center",
+        va="top",
+        fontsize=11,
+        fontweight="bold",
+    )
+
     plt.xticks(stars)
     plt.ylim(0, 1.05)
     plt.xlabel("Underlying 7-star level (for numeric logic)")
@@ -229,61 +264,11 @@ def plot_degrees(df: pd.DataFrame, outdir: Path) -> Path:
     )
 
     # Draw the relatedMatch band as a vertical anchor at x=3
-    plt.vlines(3, rel_min, rel_max, linewidth=4, alpha=0.6)
-    plt.annotate(
-        "relatedMatch band (d1..d5)",
-        xy=(3, rel_max),
-        xytext=(4, 2),
-        textcoords="offset points",
-        ha="left",
-        va="bottom",
-        fontsize=8,
-    )
+    # plt.vlines(3, rel_min, rel_max, linewidth=4, alpha=0.6)
 
     # Label for the relatedMatch point (moved further left + slightly down)
-    plt.annotate(
-        f"relatedMatch @ s*={x_related:.2f}",
-        xy=(x_related, y_related),
-        xytext=(-22, -2),
-        textcoords="offset points",
-        ha="right",
-        va="bottom",
-        fontsize=8,
-    )
 
     # --- Labels for the orange points (related / close / exact) ---
-    plt.annotate(
-        "related",
-        xy=(x_related, y_related),
-        xytext=(-6, 10),
-        textcoords="offset points",
-        ha="right",
-        va="bottom",
-        fontsize=9,
-        fontweight="bold",
-    )
-
-    plt.annotate(
-        "close",
-        xy=(6.0, y_close),
-        xytext=(4, 6),
-        textcoords="offset points",
-        ha="left",
-        va="bottom",
-        fontsize=9,
-        fontweight="bold",
-    )
-
-    plt.annotate(
-        "exact",
-        xy=(7.0, y_exact),
-        xytext=(4, 6),
-        textcoords="offset points",
-        ha="left",
-        va="bottom",
-        fontsize=9,
-        fontweight="bold",
-    )
 
     out_file = outdir / OUT_PLOT
     plt.savefig(out_file, dpi=300, bbox_inches="tight")
