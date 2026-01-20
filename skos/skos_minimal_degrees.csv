@@ -1,0 +1,4 @@
+property,degree_of_connection,note,k
+http://www.w3.org/2004/02/skos/core#relatedMatch,0.49465994151156367,mean(d(1..5)),2.0
+http://www.w3.org/2004/02/skos/core#closeMatch,0.9380796757830466,d(6),2.0
+http://www.w3.org/2004/02/skos/core#exactMatch,1.0,d(7),2.0

@@ -1,0 +1,30 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosplus: <https://w3id.org/skos-plus/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+skos:closeMatch a owl:ObjectProperty ;
+    rdfs:label "SKOS closeMatch"@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept ;
+    skosplus:degreeOfConnection 0.9380796757830466 .
+
+skos:exactMatch a owl:ObjectProperty ;
+    rdfs:label "SKOS exactMatch"@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept ;
+    skosplus:degreeOfConnection 1.0 .
+
+skos:relatedMatch a owl:ObjectProperty ;
+    rdfs:label "SKOS relatedMatch (mean(d(1..5)))"@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept ;
+    skosplus:degreeOfConnection 0.49465994151156367 .
+
+skosplus:degreeOfConnection a owl:AnnotationProperty ;
+    rdfs:label "degree of connection (0–1)"@en ;
+    rdfs:comment "Numeric degree derived from the SKOS-Plus 7-star exponential function."@en .
+
+skos:Concept a owl:Class .
+
