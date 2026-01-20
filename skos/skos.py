@@ -259,9 +259,7 @@ def plot_degrees(df: pd.DataFrame, outdir: Path) -> Path:
     plt.ylim(0, 1.05)
     plt.xlabel("Underlying 7-star level (for numeric logic)")
     plt.ylabel("Degree of Connection (0–1)")
-    plt.title(
-        "SKOS minimal degrees derived from 7-star exponential function (mean15 + equivalent star)"
-    )
+    plt.title("SKOS minimal degrees")
 
     # Draw the relatedMatch band as a vertical anchor at x=3
     # plt.vlines(3, rel_min, rel_max, linewidth=4, alpha=0.6)

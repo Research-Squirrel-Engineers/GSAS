@@ -443,7 +443,7 @@ def plot_degrees(degrees_df: pd.DataFrame, out_path: Path) -> Path:
     plt.ylim(0, 1.05)
     plt.xlabel("7-Star Mapping Level")
     plt.ylabel("Degree of Connection (0–1)")
-    plt.title("Exponential Degree of Connection for SKOS 7-Star Mapping")
+    plt.title("Degree of Connection for SKOS 7-Star Mapping")
 
     out_file = out_path / OUT_PLOT_JPG
     plt.savefig(out_file, dpi=300, bbox_inches="tight")
