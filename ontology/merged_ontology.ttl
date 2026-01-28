@@ -275,6 +275,38 @@ skosplus:q3PerceivedProbability a owl:AnnotationProperty ;
     rdfs:label "Q3 perceived probability"@en ;
     rdfs:comment "Third quartile (0..1)."@en .
 
+skosplus:relatedMatchDubious a owl:ObjectProperty ;
+    rdfs:label "relatedMatch dubious"@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept ;
+    rdfs:subPropertyOf skos:relatedMatch ;
+    skosplus:degreeOfConnection 0.16391827024426917 ;
+    skosplus:starBin "1,2"@en .
+
+skosplus:relatedMatchHigh a owl:ObjectProperty ;
+    rdfs:label "relatedMatch high"@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept ;
+    rdfs:subPropertyOf skos:relatedMatch ;
+    skosplus:degreeOfConnection 0.9690398378915233 ;
+    skosplus:starBin "6,7"@en .
+
+skosplus:relatedMatchLow a owl:ObjectProperty ;
+    rdfs:label "relatedMatch low"@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept ;
+    rdfs:subPropertyOf skos:relatedMatch ;
+    skosplus:degreeOfConnection 0.6469001325643864 ;
+    skosplus:starBin "3,4"@en .
+
+skosplus:relatedMatchMedium a owl:ObjectProperty ;
+    rdfs:label "relatedMatch medium"@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept ;
+    rdfs:subPropertyOf skos:relatedMatch ;
+    skosplus:degreeOfConnection 0.8516629019405073 ;
+    skosplus:starBin "5"@en .
+
 skosplus:relatedMatchModerate a owl:ObjectProperty ;
     rdfs:label "relatedMatch moderate (7-star level 3)"@en ;
     rdfs:domain skos:Concept ;
@@ -324,6 +356,10 @@ skosplus:relatedMatchWeak a owl:ObjectProperty ;
     skosplus:medianPerceivedProbability 0.5 ;
     skosplus:perceptionBand "About Even"@en ;
     skosplus:starLevel 2 .
+
+skosplus:starBin a owl:AnnotationProperty ;
+    rdfs:label "star bin"@en ;
+    rdfs:comment "Internal explanatory star bin used to derive a 4-level degree (annotation only)."@en .
 
 skosplus:starLevel a owl:AnnotationProperty ;
     rdfs:label "7-star level"@en ;

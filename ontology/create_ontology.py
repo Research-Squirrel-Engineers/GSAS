@@ -78,7 +78,8 @@ def ttl_input_paths(root: Path) -> Tuple[Path, Path, Path]:
     p_minimal = root / "skos" / "skos_minimal_degrees.ttl"
     p_7star = root / "skos_7star" / "skos_7star_mapping.ttl"
     p_perc = root / "skos_perceptions" / "skos_perceptions_mapping.ttl"
-    return p_minimal, p_7star, p_perc
+    p_4level = root / "skos_4level" / "skos_4level_mapping.ttl"
+    return p_minimal, p_7star, p_perc, p_4level
 
 
 # -----------------------------
@@ -151,9 +152,9 @@ def find_potential_conflicts(g: Graph) -> Dict[Tuple[str, str], Set[str]]:
 
 def main() -> int:
     root = repo_root_from_this_file()
-    in_minimal, in_7star, in_perc = ttl_input_paths(root)
+    in_minimal, in_7star, in_perc, in_4level = ttl_input_paths(root)
 
-    missing = [p for p in (in_minimal, in_7star, in_perc) if not p.exists()]
+    missing = [p for p in (in_minimal, in_7star, in_perc, in_4level) if not p.exists()]
     if missing:
         print("ERROR: Missing input TTL file(s):", file=sys.stderr)
         for p in missing:
@@ -169,6 +170,7 @@ def main() -> int:
     added_min = parse_into(merged, in_minimal)
     added_7s = parse_into(merged, in_7star)
     added_perc = parse_into(merged, in_perc)
+    added_4l = parse_into(merged, in_4level)
 
     # Optional diagnostics
     conflicts = find_potential_conflicts(merged)
@@ -184,6 +186,7 @@ def main() -> int:
     print(f" - {in_minimal}   (+{added_min} triples)")
     print(f" - {in_7star}     (+{added_7s} triples)")
     print(f" - {in_perc}      (+{added_perc} triples)")
+    print(f" - {in_4level}   (+{added_4l} triples)")
     print("Output:")
     print(f" - {out_file}")
     print(f"Total triples: {len(merged)}")
