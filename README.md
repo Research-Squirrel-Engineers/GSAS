@@ -8,8 +8,9 @@ This repository provides a **reproducible, ontology-driven framework** for model
 It combines three complementary layers:
 
 1. **Minimal SKOS mapping degrees** (`exactMatch`, `closeMatch`, `relatedMatch`)
-2. **7-star SKOS mapping refinement** (methodological layer)
-3. **Empirical perceptions of probability** (language-based, empirical layer)
+2. **4-level SKOS mapping refinement** (`high`, `medium`, `low`, `dubious`)
+3. **7-star SKOS mapping refinement** (methodological layer)
+4. **Empirical perceptions of probability** (language-based, empirical layer)
 
 All layers are published as **property-only RDF (TBox)**, are fully mergeable into
 a single ontology, and are accompanied by CSV tables and plots for transparency
@@ -35,6 +36,12 @@ fuzzy-wobbly-semantic-alignment/
 │  ├─ skos_minimal_degrees.ttl
 │  ├─ skos_minimal_degrees.csv
 │  └─ skos_minimal_degree_plot.jpg
+│
+├─ skos_4level/
+│  ├─ skos_4level.py
+│  ├─ skos_4level_mapping.ttl
+│  ├─ skos_4level_degrees.csv
+│  └─ skos_4level_degree_plot.jpg
 │
 ├─ skos_7star/
 │  ├─ skos_7star.py
@@ -109,6 +116,54 @@ It answers the question:
 - `skos_minimal_degree_plot.jpg`
 
 This layer acts as the **semantic anchor** for all further extensions.
+
+---
+
+## skos_4level/skos_4level.py — 4-level SKOS mapping refinement
+
+### Purpose
+
+This script provides a **coarse-grained refinement layer** for SKOS mappings
+using four intuitive levels:
+
+- **high**
+- **medium**
+- **low**
+- **dubious**
+
+It answers the question:
+
+> How can SKOS mappings be expressed with a small, human-friendly set of
+> confidence levels while remaining compatible with the 7-star model?
+
+### What the script does
+
+- Introduces four sub-properties of `skos:relatedMatch`
+- Derives numeric degrees from the **same 7-star exponential function**
+- Aggregates star levels into bins:
+  - dubious → stars 1–2
+  - low → stars 3–4
+  - medium → star 5
+  - high → stars 6–7
+- Annotates each property with:
+  - `skosplus:degreeOfConnection`
+  - an internal explanatory star bin (annotation only)
+- Produces RDF, CSV, and a plot
+
+### Modelling role
+
+This layer acts as a **bridge** between:
+- the minimal SKOS baseline (3 relations)
+- the fine-grained 7-star refinement
+
+It is intended for use cases where **interpretability and simplicity**
+are preferred over maximal granularity.
+
+### Outputs
+
+- `skos_4level_mapping.ttl`
+- `skos_4level_degrees.csv`
+- `skos_4level_degree_plot.jpg`
 
 ---
 
@@ -213,6 +268,7 @@ It answers the question:
 
 - Loads:
 - `skos_minimal_degrees.ttl`
+- `skos_4level_mapping.ttl`
 - `skos_7star_mapping.ttl`
 - `skos_perceptions_mapping.ttl`
 - Merges them into one RDF graph
