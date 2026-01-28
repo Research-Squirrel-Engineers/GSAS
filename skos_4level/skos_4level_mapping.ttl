@@ -1,0 +1,60 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosplus: <https://w3id.org/skos-plus/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+skos:closeMatch a owl:ObjectProperty ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept .
+
+skos:exactMatch a owl:ObjectProperty ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept .
+
+skosplus:degreeOfConnection a owl:AnnotationProperty ;
+    rdfs:label "degree of connection (0–1)"@en ;
+    rdfs:comment "Numeric degree derived from the SKOS-Plus 7-star exponential function."@en .
+
+skosplus:relatedMatchDubious a owl:ObjectProperty ;
+    rdfs:label "relatedMatch dubious"@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept ;
+    rdfs:subPropertyOf skos:relatedMatch ;
+    skosplus:degreeOfConnection 0.16391827024426917 ;
+    skosplus:starBin "1,2"@en .
+
+skosplus:relatedMatchHigh a owl:ObjectProperty ;
+    rdfs:label "relatedMatch high"@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept ;
+    rdfs:subPropertyOf skos:relatedMatch ;
+    skosplus:degreeOfConnection 0.9690398378915233 ;
+    skosplus:starBin "6,7"@en .
+
+skosplus:relatedMatchLow a owl:ObjectProperty ;
+    rdfs:label "relatedMatch low"@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept ;
+    rdfs:subPropertyOf skos:relatedMatch ;
+    skosplus:degreeOfConnection 0.6469001325643864 ;
+    skosplus:starBin "3,4"@en .
+
+skosplus:relatedMatchMedium a owl:ObjectProperty ;
+    rdfs:label "relatedMatch medium"@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept ;
+    rdfs:subPropertyOf skos:relatedMatch ;
+    skosplus:degreeOfConnection 0.8516629019405073 ;
+    skosplus:starBin "5"@en .
+
+skosplus:starBin a owl:AnnotationProperty ;
+    rdfs:label "star bin"@en ;
+    rdfs:comment "Internal explanatory star bin used to derive a 4-level degree (annotation only)."@en .
+
+skos:relatedMatch a owl:ObjectProperty ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept .
+
+skos:Concept a owl:Class .
+

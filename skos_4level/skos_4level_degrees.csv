@@ -1,0 +1,5 @@
+level,property,degree_of_connection,note,stars,k
+dubious,https://w3id.org/skos-plus/relatedMatchDubious,0.16391827024426917,"mean(d(1,2))","1,2",2.0
+low,https://w3id.org/skos-plus/relatedMatchLow,0.6469001325643864,"mean(d(3,4))","3,4",2.0
+medium,https://w3id.org/skos-plus/relatedMatchMedium,0.8516629019405073,mean(d(5)),5,2.0
+high,https://w3id.org/skos-plus/relatedMatchHigh,0.9690398378915233,"mean(d(6,7))","6,7",2.0
